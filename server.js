@@ -1,21 +1,19 @@
-// index.js
-const express = require('express');
-const app = express();
-const apiRoutes = require('./routes/api');
+import express from 'express';
+import apiRoutes from './routes/api.js';
 
-// Middleware
-app.use(express.json()); // to parse JSON bodies
+const app = express();
+
+app.use(express.json()); // Middleware to parse JSON
 
 // Routes
 app.use('/api', apiRoutes);
 
-// Home route
 app.get('/', (req, res) => {
   res.send('Welcome to the Node.js + Express.js API!');
 });
 
-// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
+
